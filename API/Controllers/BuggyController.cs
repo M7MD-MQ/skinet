@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    // This class used to setup some errors types.
     public class BuggyController : BaseApiController
     {
         private readonly StoreContext _context;

@@ -28,7 +28,7 @@ namespace API.Controllers
             _productBrandRepo = productBrandRepo;
             _productTypeRepo = productTypeRepo;
         }
-
+        
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Pagination<ProductToReturnDto>>>> GetProducts([FromQuery]ProductSpecParams productParams)
         {

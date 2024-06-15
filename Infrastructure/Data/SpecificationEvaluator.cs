@@ -13,7 +13,7 @@ namespace Infrastructure.Data
 
             if(spec.Criteria != null)
             {
-                query = query.Where(spec.Criteria);
+                query = query.Where(spec.Criteria); //(spec.Criteria) ==> p => p.ProductTypeId == id
             }
 
             if(spec.OrderBy != null)
@@ -26,11 +26,12 @@ namespace Infrastructure.Data
                 query = query.OrderByDescending(spec.OrderByDescending);
             }
             
-            if(spec.IsPagingEnabled)
+            if(spec.IsPagingEnabled) //must be the last, after we filter our result.
             {
                 query = query.Skip(spec.Skip).Take(spec.Take);
             }
             
+            //this will simply add our includes to the query like .Include(p => p.ProductType)..Include(p => p.ProductBrand)
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
             
             return query;

@@ -10,10 +10,16 @@ namespace Infrastructure.Data
         {
         }
 
+        //To create Products, ProductBrands and ProductTypes tables in the database.
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
 
+
+        //To fix SQLite decimal limitation (nothing else).
+        // Customize the ASP.NET Identity model and override the defaults if needed.
+        // For example, you can rename the ASP.NET Identity table names and more.
+        // Add your customizations after calling base.OnModelCreating(builder);
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

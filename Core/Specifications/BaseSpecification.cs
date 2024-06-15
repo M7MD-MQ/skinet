@@ -4,14 +4,18 @@ namespace Core.Specifications
 {
     public class BaseSpecification<T> : ISpecification<T>
     {
+        //For the includes only, so we can use it by ProductsWithTypesAndBrandsSpecification
         public BaseSpecification()
         {
         }
+        
         public BaseSpecification(Expression<Func<T, bool>> criteria)
         {
             Criteria = criteria;
         }
         public Expression<Func<T, bool>> Criteria { get; }
+
+        //= new List<Expression<Func<T, object>>>(); ==> to set a defult value.
         public List<Expression<Func<T, object>>> Includes { get; } =
             new List<Expression<Func<T, object>>>();
 
@@ -25,6 +29,7 @@ namespace Core.Specifications
 
         public bool IsPagingEnabled { get; private set; }
 
+        //To add the includes expressions to our list above.
         protected void AddInclude(Expression<Func<T, object>> includeExpression)
         {
             Includes.Add(includeExpression);
